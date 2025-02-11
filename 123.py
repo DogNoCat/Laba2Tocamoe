@@ -24,3 +24,22 @@ def find_valid_dates(text: str) -> List[str]:
             continue
 
     return valid_dates
+def count_dates(text: str) -> int:
+    """
+    Подсчитывает количество корректных дат в тексте.
+
+    :param text: Строка, в которой нужно найти даты
+    :return: Количество найденных дат
+    """
+    return len(find_valid_dates(text))
+
+def find_dates_from_file(filepath: str) -> List[str]:
+    """
+    Функция для поиска корректных дат в текстовом файле.
+
+    :param filepath: Путь к текстовому файлу
+    :return: Список найденных корректных дат
+    """
+    with open(filepath, "r", encoding="utf-8") as file:
+        content = file.read()
+    return find_valid_dates(content)
