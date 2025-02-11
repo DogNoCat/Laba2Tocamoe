@@ -67,3 +67,25 @@ def read_file_content(filepath: str) -> str:
         print(f"Файл '{filepath}' не найден.")
         return ""
 
+def main():
+    try:
+        print("Выберите опцию:")
+        print("1. Ввести текст вручную")
+        print("2. Проанализировать файл")
+        choice = input("Введите номер опции (1/2): ")
+
+        if choice == "1":
+            user_text = input("Введите текст для поиска дат: ")
+            print(f"Количество дат в тексте: {count_dates(user_text)}")
+        elif choice == "2":
+            filepath = input("Введите путь к текстовому файлу: ")
+            if os.path.exists(filepath):
+                file_content = read_file_content(filepath)
+                print(f"Количество дат в файле '{os.path.basename(filepath)}': {count_dates(file_content)}")
+            else:
+                print("Указанный файл не найден.")
+        else:
+            print("Неверный выбор. Попробуйте ещё раз!")
+
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
