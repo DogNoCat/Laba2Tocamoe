@@ -43,3 +43,12 @@ def find_dates_from_file(filepath: str) -> List[str]:
     with open(filepath, "r", encoding="utf-8") as file:
         content = file.read()
     return find_valid_dates(content)
+def count_dates_from_file(filepath: str) -> int:
+    """
+    Подсчитывает количество дат в текстовом файле.
+
+    :param filepath: Путь к текстовому файлу
+    :return: Количество найденных дат
+    """
+    return count_dates(read_file_content(filepath))
+
