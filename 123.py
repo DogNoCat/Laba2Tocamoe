@@ -52,3 +52,18 @@ def count_dates_from_file(filepath: str) -> int:
     """
     return count_dates(read_file_content(filepath))
 
+def read_file_content(filepath: str) -> str:
+    """
+    Читает содержимое текстового файла.
+
+    :param filepath: Путь к текстовому файлу
+    :return: Содержание файла как строка
+    """
+    try:
+        with open(filepath, "r", encoding="utf-8") as file:
+            content = file.read()
+        return content
+    except FileNotFoundError:
+        print(f"Файл '{filepath}' не найден.")
+        return ""
+
